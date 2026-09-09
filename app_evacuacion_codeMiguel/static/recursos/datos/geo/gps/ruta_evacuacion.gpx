@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Generador GPX" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Ruta de Evacuación de Emergencia</name>
+    <desc>Ruta segura de evacuación desde punto de origen hasta punto de encuentro seguro.</desc>
+    <time>2026-09-09T13:49:00Z</time>
+  </metadata>
+
+  <!-- PUNTOS CLAVE DE LA RUTA -->
+  <wpt lat="2.4419" lon="-76.6064">
+    <name>Punto de Partida</name>
+    <desc>Inicio de la evacuación (Origen)</desc>
+    <sym>Flag, Green</sym>
+  </wpt>
+
+  <wpt lat="2.4435" lon="-76.6050">
+    <name>Punto de Encuentro Seguro</name>
+    <desc>Zona segura y punto de reunión asignado</desc>
+    <sym>Flag, Blue</sym>
+  </wpt>
+
+  <!-- TRAYECTO DE EVACUACIÓN -->
+  <trk>
+    <name>Trayecto de Evacuación</name>
+    <trkseg>
+      <trkpt lat="2.44190" lon="-76.60640">
+        <ele>1760.0</ele>
+        <time>2026-09-09T13:49:00Z</time>
+      </trkpt>
+      <trkpt lat="2.44230" lon="-76.60600">
+        <ele>1760.5</ele>
+        <time>2026-09-09T13:49:30Z</time>
+      </trkpt>
+      <trkpt lat="2.44280" lon="-76.60550">
+        <ele>1761.0</ele>
+        <time>2026-09-09T13:50:00Z</time>
+      </trkpt>
+      <trkpt lat="2.44350" lon="-76.60500">
+        <ele>1761.2</ele>
+        <time>2026-09-09T13:50:45Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
