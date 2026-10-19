@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evacuacion CodeMiguel</title>
+    <link
+        rel="icon" href="{% static 'recursos/imagenes/sistemas/favicon.ico'%}"
+    />
+    <link rel="manifest" href="{% static 'recursos/pwa/manifest.json'%}"/>
+    <link rel="stylesheet" href="{% static 'recursos/estilos/estilos.css'%}"/>
+    <link rel="stylesheet" href="{% static 'recursos/libs/leaflet/leaflet.css'%}"/>
+    <!-- Estilo de Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    
+    <!-- Estilo opcional para que el panel de instrucciones se adapte perfectamente a tu tarjeta -->
+    <style>
+        #contenedor-rutas-texto .leaflet-routing-container {
+            width: 100% !important;
+            margin: 0 !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-contenedor">
+            <a href="{% url 'evacuacion.html'%}" class="nav-logo">CodeMiguel</a>
+            <ul class="nav-menu">
+                <li><a href="{% url 'evacuacion.html' %}" class="nav-enlace activo">Generalidad CodeMiguel</a></li>
+                <li><a href="{% url 'panel_codeMiguel' %}" class="nav-enlace"> Panel CodeMiguel</a></li>
+            </ul>
+        </div>
+    </nav>    
+    <header>
+        <h1>CodeMiguel Aplicacion</h1>
+    </header>
+    <main>
+        <section class="tarjeta">
+            <h2> Imagenes </h2>
+            <img
+                src="{% static 'recursos/imagenes/fotos/camarozl1.png' %}"
+                width="250"
+                />
+            <img
+                src="{% static 'recursos/imagenes/iconos/salida.svg'%}"
+                />
+        </section>
+
+        <section class="tarjeta">
+            <h2> Video CodeMiguel </h2>
+            <video width="100%" controls>
+                <source src="{% static 'recursos/videos/clips/THE EXORCIST by Hennessey Performance  1000 HP Camaro ZL1.mp4'%}" type="video/mp4"/>
+                <track
+                src="{% static 'recursos/videos/subtitulos/subtitulos.vtt'%}"
+                kind="subtitles" srclang="es" label="Español"/>
+                Tu navegador no soporta video.
+            </video>
+        </section>
+
+        <!-- 🔷 SECCIÓN: Apartado 3D CodeMiguel (Selector de Autos Funcional) -->
+        <section class="tarjeta">
+            <h2> Apartado 3D CodeMiguel </h2>
+            
+            <!-- Botones interactivos para cambiar de vehículo -->
+            <div class="botonera" style="margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                <button id="btn-camaro" class="btn-mapa btn-verde" style="padding: 8px 14px; cursor: pointer;">🚗 Camaro ZL1</button>
+                <button id="btn-aventador" class="btn-mapa btn-verde" style="padding: 8px 14px; cursor: pointer;">🏎️ Aventador SVJ</button>
+                <button id="btn-mclaren" class="btn-mapa btn-verde" style="padding: 8px 14px; cursor: pointer;">🏁 McLaren P1 MSO</button>
+                <button id="btn-renault" class="btn-mapa btn-verde" style="padding: 8px 14px; cursor: pointer;">🚙 Renault 4 GTL</button>
+                <button id="btn-bmw" class="btn-mapa btn-verde" style="padding: 8px 14px; cursor: pointer;">👑 BMW M3 GTR</button>
+            </div>
+
+            <!-- Contenedor con recorte superior (top: -45px) para ocultar título/creador -->
+            <div style="width: 100%; height: 420px; border-radius: 8px; overflow: hidden; position: relative; background-color: #000;"> 
+                <iframe 
+                    id="visor-3d-iframe"
+                    title="Visor 3D CodeMiguel" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    width="100%" 
+                    height="485" 
+                    style="position: absolute; top: -45px; left: 0;"
+                    src="https://sketchfab.com/models/c57c5b0ff3e347c5aa40795a23e22187/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0"> 
+                </iframe> 
+            </div>
+        </section>
+
+        <section class="tarjeta">
+            <h2> Audio CodeMiguel 1 </h2>
+            <audio controls>
+                <source src="{% static 'recursos/audios/alertas/Aventador SVJ Novitec exhaust in Warsaw Brutal sound.mp3' %}" type="audio/mp3">
+                Tu navegador no soporta Audio.
+            </audio>
+
+            <h2> audio codeMiguel 2</h2>
+            <audio controls>
+                <source src="{% static 'recursos/audios/alertas/McLaren P1 Revving.mp3' %}" type="audio/mp3">
+                Tu navegador no soporta Audio.
+            </audio>
+        </section>
+
+        <section class="tarjeta">
+    <h2>📄 Documentos y datos coderider</h2>
+    <a href="{% static 'recursos/documentos/comprimidos/pdf/plan_de_evacuacion_codemiguel.pdf' %}" target="_blank">
+    📄 PDF codeMiguel
+</a>
+    
+    <a href="{% static 'recursos/documentos/comprimidos/kit_de_emergencia_codemiguel.zip' %}" download>
+        📦 ZIP codeMiguel
+    </a>
+    
+    <a href="{% static 'recursos/datos/tablas/extintores.csv' %}" download>
+        📊 CSV codeMiguel
+    </a>
+    
+    <a href="{% static 'recursos/datos/gps/ruta_evacuacion.gpx' %}" download>
+        📍 GPS codeMiguel
+    </a>
+</section>
+
+        <section class="tarjeta">
+            <h2>📷 Subir archivos codeMiguel</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit">Enviar reporte</button>
+            </form>
+        </section>
+
+        <section class="tarjeta">
+            <h2>📑 Reportes recibidos codeMiguel</h2>
+            {% for r in reportes %}
+                <div class="reporte">
+                    <img src="{{ r.foto.url }}" width="150" />
+                    <p><strong>{{ r.nombre }}</strong>: {{ r.descripcion }}</p>
+                    <p>🗓️ {{ r.fecha|date:"d/m/Y H:i" }}</p>
+                    {% if r.documento %}
+                        <a href="{{ r.documento.url }}">Ver documento</a>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>Aún no hay reportes.</p>
+            {% endfor %}
+        </section>
+
+        <section class="tarjeta">
+            <h2>Mapa De Ruta + geolocalizacion CodeMiguel</h2>
+            
+            <div class="controles-ruta" style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                <div style="flex: 1; min-width: 280px;">
+                    <label for="input-lugar" style="font-size: 14px; font-weight: bold; display: block; margin-bottom: 5px;">Escribe tu barrio o zona turística:</label>
+                    <input type="text" id="input-lugar" placeholder="Ej: Morro de Tulcán, Popayán" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc;">
+                </div>
+                <button id="btn-buscar-lugar" class="btn-mapa btn-verde" style="margin-top: 20px; padding: 10px 15px; cursor: pointer;">
+                    Buscar y Trazar Ruta
+                </button>
+            </div>
+
+            <div class="botonera" style="margin-bottom: 10px;">
+                <button id="btn-ruta" class="btn-mapa btn-verde">
+                    Mostrar ruta + geolocalizacion codeMiguel
+                </button>
+            </div>
+
+            <div id="mapa" style="height: 450px; width: 100%;"></div>
+            <div id="contenedor-rutas-texto" style="margin-top: 15px; max-height: 250px; overflow-y: auto;"></div>
+        </section>
+        
+        <section class="tarjeta">
+            <h2>🌐 Api CodeMiguel </h2>
+            <p> Fuente: api en la nueva codeMiguel</p>
+            <div class="botonera">
+                <button id="btn-sismos" class="btn-mapa btn-rojo">
+                    🔴Mostrar puntos en mapa
+                </button>
+            </div>
+            <div id="lista-sismos" class="lista-puntos"></div>
+        </section>
+    </main>
+
+    <!-- 1. Variables de configuración globales -->
+    <script>
+        const CRSF_TOKEN = "{{csrf_token}}";
+        const URL_CSV = "{% static 'recursos/datos/tablas/extintores.csv' %}";
+        const URL_GEO = "{% static 'recursos/datos/ruta.geojson' %}";
+        const URL_JSON = "{% static 'recursos/datos/json/puntos_encuentro.json' %}";
+
+        const fechaHoy = new Date().toISOString().split('T')[0];
+        const fechaPasada = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+        const URL_API_SISMOS = `https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${fechaPasada}&endtime=${fechaHoy}&minmagnitude=2.0&minlatitude=-5.0&maxlatitude=13.0&minlongitude=-82.0&maxlongitude=-66.0&orderby=time`;
+    </script>
+
+    <!-- 2. Carga de dependencias principales -->
+    <script src="{% static 'recursos/libs/leaflet/leaflet.js' %}"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+    <!-- 3. Script para alternar los modelos de vehículos 3D -->
+    <script>
+        const iframe3D = document.getElementById('visor-3d-iframe');
+
+        // Mapeo con los IDs exactos de todos los modelos de Sketchfab
+        const modelosVehiculos = {
+            camaro: "https://sketchfab.com/models/c57c5b0ff3e347c5aa40795a23e22187/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
+            aventador: "https://sketchfab.com/models/412e5ba4c1264a4fab97660ebc0695a4/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
+            mclaren: "https://sketchfab.com/models/c7687064e08c4be9a0af88e98bcf0a8e/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
+            renault: "https://sketchfab.com/models/67571a45cc874876892e938ad7e2a089/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
+            bmw: "https://sketchfab.com/models/7deca432dbda4298893988813528b9c8/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0"
+        };
+
+        document.getElementById('btn-camaro')?.addEventListener('click', () => {
+            if (iframe3D) iframe3D.src = modelosVehiculos.camaro;
+        });
+
+        document.getElementById('btn-aventador')?.addEventListener('click', () => {
+            if (iframe3D) iframe3D.src = modelosVehiculos.aventador;
+        });
+
+        document.getElementById('btn-mclaren')?.addEventListener('click', () => {
+            if (iframe3D) iframe3D.src = modelosVehiculos.mclaren;
+        });
+
+        document.getElementById('btn-renault')?.addEventListener('click', () => {
+            if (iframe3D) iframe3D.src = modelosVehiculos.renault;
+        });
+
+        document.getElementById('btn-bmw')?.addEventListener('click', () => {
+            if (iframe3D) iframe3D.src = modelosVehiculos.bmw;
+        });
+    </script>
+
+    <!-- 4. Scripts del mapa -->
+    <script src="{% static 'recursos/script/tabla_csv.js' %}"></script>
+    <script src="{% static 'recursos/script/puntos_encuentro.js' %}"></script>
+    <script src="{% static 'recursos/script/mapa.js' %}"></script>
+    <script src="{% static 'recursos/script/sismo_api.js' %}"></script>
+</body>
+</html>

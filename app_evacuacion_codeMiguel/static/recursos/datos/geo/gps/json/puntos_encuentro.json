@@ -1,29 +1,14 @@
-{
-  "tienda": "SENA Market",
-  "sucursal": "Popayán",
-  "activo": true,
-  "productos": [
-    {
-      "id": 1,
-      "nombre": "Café Especial del Cauca",
-      "categoria": "Bebidas",
-      "precio": 18500,
-      "stock": 45,
-      "disponible": true,
-      "tags": ["orgánico", "regional"]
-    },
-    {
-      "id": 2,
-      "nombre": "Artesanía en Barro",
-      "categoria": "Decoración",
-      "precio": 35000,
-      "stock": 12,
-      "disponible": true,
-      "tags": ["hecho a mano", "tradicional"]
-    }
-  ],
-  "contacto": {
-    "email": "soporte@senamarket.com",
-    "telefono": "+57 3001234567"
+[
+  {
+    "nombre": "Punto de Encuentro 1 - SENA",
+    "lat": 2.4419,
+    "lng": -76.6060,
+    "descripcion": "Zona segura principal"
+  },
+  {
+    "nombre": "Punto de Encuentro 2",
+    "lat": 2.4450,
+    "lng": -76.6100,
+    "descripcion": "Zona segura secundaría"
   }
-}
+]

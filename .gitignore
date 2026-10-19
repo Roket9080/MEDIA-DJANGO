@@ -1,0 +1,19 @@
+# Base de datos local
+*.sqlite3
+db.sqlite3
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# Archivos estáticos recopilados y archivos media subidos
+/staticfiles/
+/media/
+
+# Variables de entorno
+.env

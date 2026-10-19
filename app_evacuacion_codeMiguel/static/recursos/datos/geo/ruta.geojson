@@ -3,33 +3,16 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-        "nombre": "Popayán",
-        "tipo": "Ciudad",
-        "departamento": "Cauca"
-      },
       "geometry": {
-        "type": "Point",
-        "coordinates": [-76.6064, 2.4419]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "nombre": "Zona Ejemplo",
-        "descripcion": "Polígono de muestra"
-      },
-      "geometry": {
-        "type": "Polygon",
+        "type": "LineString",
         "coordinates": [
-          [
-            [-76.61, 2.45],
-            [-76.60, 2.45],
-            [-76.60, 2.44],
-            [-76.61, 2.44],
-            [-76.61, 2.45]
-          ]
+          [-76.606, 2.441],
+          [-76.610, 2.445],
+          [-76.615, 2.450]
         ]
+      },
+      "properties": {
+        "name": "Ruta de Evacuación CodeMiguel"
       }
     }
   ]
