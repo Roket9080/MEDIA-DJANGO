@@ -13,13 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Guardamos la instancia de manera global
     window.miMapa = mapaIniciado;
 
-  // 2. Capa visual de OpenStreetMap optimizada para cualquier zoom
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  // 2. Capa visual de mapas (Esri - Libre, sin bloqueos y soporta todo zoom)
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
         minZoom: 3,
         maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, and the GIS User Community'
     }).addTo(mapaIniciado);
-
     // 3. MARCADOR PRINCIPAL: SENA ALTO DEL CAUCA
     L.marker([latSena, lngSena]).addTo(mapaIniciado)
         .bindPopup("<b>SENA Alto del Cauca</b><br>Punto principal de evacuación y encuentro.")
