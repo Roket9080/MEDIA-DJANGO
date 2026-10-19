@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Guardamos la instancia de manera global
     window.miMapa = mapaIniciado;
 
-   // 2. Capa visual de mapas (CARTO Voyager - Libre de bloqueos)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+   // 2. Capa visual de mapas (Wikimedia - Libre y sin API Key)
+    L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
-        subdomains: 'abcd',
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        attribution: '&copy; <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a> contributors &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mapaIniciado);
 
     // 3. MARCADOR PRINCIPAL: SENA ALTO DEL CAUCA
