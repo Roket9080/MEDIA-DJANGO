@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'mi_evacuacion.wsgi.application'
 import os
 import dj_database_url
 
+# Configuración limpia de la base de datos
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-        conn_health_checks_enabled=True,
+        conn_max_age=600
     )
 }
 

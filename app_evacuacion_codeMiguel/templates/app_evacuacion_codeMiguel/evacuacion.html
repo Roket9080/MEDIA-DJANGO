@@ -14,13 +14,106 @@
     <!-- Estilo de Leaflet Routing Machine -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     
-    <!-- Estilo opcional para que el panel de instrucciones se adapte perfectamente a tu tarjeta -->
+    <!-- Estilo para la calculadora y Leaflet -->
     <style>
         #contenedor-rutas-texto .leaflet-routing-container {
             width: 100% !important;
             margin: 0 !important;
             box-shadow: none !important;
             background-color: transparent !important;
+        }
+
+        /* Estilos Integrados de la Calculadora CodeMiguel */
+        .calculator-card {
+            max-width: 320px;
+            margin: 10px auto;
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .calculator-title {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .calculator-display input {
+            width: 100%;
+            height: 50px;
+            background: #0f172a;
+            border: none;
+            border-radius: 8px;
+            color: #38bdf8;
+            font-size: 1.8rem;
+            text-align: right;
+            padding: 0 15px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .btn-calc {
+            height: 48px;
+            border: none;
+            border-radius: 8px;
+            background: #334155;
+            color: #f8fafc;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-calc:hover {
+            background: #475569;
+        }
+
+        .btn-calc:active {
+            transform: scale(0.95);
+        }
+
+        .btn-operator {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .btn-operator:hover {
+            background: #0369a1;
+        }
+
+        .btn-action {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        .btn-action:hover {
+            background: #dc2626;
+        }
+
+        .btn-equal {
+            background: #10b981;
+            color: #ffffff;
+            grid-row: span 2;
+            height: 106px;
+        }
+
+        .btn-equal:hover {
+            background: #059669;
+        }
+
+        .btn-zero {
+            grid-column: span 2;
         }
     </style>
 </head>
@@ -95,6 +188,40 @@
             </div>
         </section>
 
+        <!-- 🔷 SECCIÓN: Calculadora CodeMiguel -->
+        <section class="tarjeta">
+            <h2>🧮 Calculadora CodeMiguel</h2>
+            <div class="calculator-card">
+                <div class="calculator-display">
+                    <input type="text" id="calc-screen" readonly value="0">
+                </div>
+                <div class="calculator-buttons">
+                    <button onclick="clearCalc()" class="btn-calc btn-action">C</button>
+                    <button onclick="deleteLast()" class="btn-calc btn-action">⌫</button>
+                    <button onclick="appendCalc('/')" class="btn-calc btn-operator">÷</button>
+                    <button onclick="appendCalc('*')" class="btn-calc btn-operator">×</button>
+
+                    <button onclick="appendCalc('7')" class="btn-calc">7</button>
+                    <button onclick="appendCalc('8')" class="btn-calc">8</button>
+                    <button onclick="appendCalc('9')" class="btn-calc">9</button>
+                    <button onclick="appendCalc('-')" class="btn-calc btn-operator">-</button>
+
+                    <button onclick="appendCalc('4')" class="btn-calc">4</button>
+                    <button onclick="appendCalc('5')" class="btn-calc">5</button>
+                    <button onclick="appendCalc('6')" class="btn-calc">6</button>
+                    <button onclick="appendCalc('+')" class="btn-calc btn-operator">+</button>
+
+                    <button onclick="appendCalc('1')" class="btn-calc">1</button>
+                    <button onclick="appendCalc('2')" class="btn-calc">2</button>
+                    <button onclick="appendCalc('3')" class="btn-calc">3</button>
+                    <button onclick="calculateResult()" class="btn-calc btn-equal">=</button>
+
+                    <button onclick="appendCalc('0')" class="btn-calc btn-zero">0</button>
+                    <button onclick="appendCalc('.')" class="btn-calc">.</button>
+                </div>
+            </div>
+        </section>
+
         <section class="tarjeta">
             <h2> Audio CodeMiguel 1 </h2>
             <audio controls>
@@ -110,23 +237,23 @@
         </section>
 
         <section class="tarjeta">
-    <h2>📄 Documentos y datos coderider</h2>
-    <a href="{% static 'recursos/documentos/comprimidos/pdf/plan_de_evacuacion_codemiguel.pdf' %}" target="_blank">
-    📄 PDF codeMiguel
-</a>
-    
-    <a href="{% static 'recursos/documentos/comprimidos/kit_de_emergencia_codemiguel.zip' %}" download>
-        📦 ZIP codeMiguel
-    </a>
-    
-    <a href="{% static 'recursos/datos/tablas/extintores.csv' %}" download>
-        📊 CSV codeMiguel
-    </a>
-    
-    <a href="{% static 'recursos/datos/gps/ruta_evacuacion.gpx' %}" download>
-        📍 GPS codeMiguel
-    </a>
-</section>
+            <h2>📄 Documentos y datos coderider</h2>
+            <a href="{% static 'recursos/documentos/comprimidos/pdf/plan_de_evacuacion_codemiguel.pdf' %}" target="_blank">
+                📄 PDF codeMiguel
+            </a>
+            
+            <a href="{% static 'recursos/documentos/comprimidos/kit_de_emergencia_codemiguel.zip' %}" download>
+                📦 ZIP codeMiguel
+            </a>
+            
+            <a href="{% static 'recursos/datos/tablas/extintores.csv' %}" download>
+                📊 CSV codeMiguel
+            </a>
+            
+            <a href="{% static 'recursos/datos/gps/ruta_evacuacion.gpx' %}" download>
+                📍 GPS codeMiguel
+            </a>
+        </section>
 
         <section class="tarjeta">
             <h2>📷 Subir archivos codeMiguel</h2>
@@ -204,11 +331,44 @@
     <script src="{% static 'recursos/libs/leaflet/leaflet.js' %}"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
-    <!-- 3. Script para alternar los modelos de vehículos 3D -->
+    <!-- 3. Lógica JavaScript para la Calculadora -->
+    <script>
+        const screen = document.getElementById('calc-screen');
+
+        function appendCalc(value) {
+            if (screen.value === '0' && value !== '.') {
+                screen.value = value;
+            } else {
+                screen.value += value;
+            }
+        }
+
+        function clearCalc() {
+            screen.value = '0';
+        }
+
+        function deleteLast() {
+            if (screen.value.length === 1 || screen.value === 'Error') {
+                screen.value = '0';
+            } else {
+                screen.value = screen.value.slice(0, -1);
+            }
+        }
+
+        function calculateResult() {
+            try {
+                let expression = screen.value.replace(/×/g, '*').replace(/÷/g, '/');
+                screen.value = eval(expression);
+            } catch (e) {
+                screen.value = 'Error';
+            }
+        }
+    </script>
+
+    <!-- 4. Script para alternar los modelos de vehículos 3D -->
     <script>
         const iframe3D = document.getElementById('visor-3d-iframe');
 
-        // Mapeo con los IDs exactos de todos los modelos de Sketchfab
         const modelosVehiculos = {
             camaro: "https://sketchfab.com/models/c57c5b0ff3e347c5aa40795a23e22187/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
             aventador: "https://sketchfab.com/models/412e5ba4c1264a4fab97660ebc0695a4/embed?autostart=1&ui_controls=0&ui_infos=0&ui_watermark=0",
@@ -238,7 +398,7 @@
         });
     </script>
 
-    <!-- 4. Scripts del mapa -->
+    <!-- 5. Scripts del mapa -->
     <script src="{% static 'recursos/script/tabla_csv.js' %}"></script>
     <script src="{% static 'recursos/script/puntos_encuentro.js' %}"></script>
     <script src="{% static 'recursos/script/mapa.js' %}"></script>
