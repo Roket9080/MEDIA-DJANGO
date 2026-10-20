@@ -11,7 +11,7 @@ def evacuacion(request):
         else:
             form= ReporteForm()
         reportes = Reporte.objects.all()
-        return render(request, 'app_evacuacion_codeMiguel/evacuacion.html')
+        return render(request, 'app_evacuacion_codeMiguel/evacuacion.html', {'form': form, 'reportes': reportes})
 
 def index(request):
     return render(request, 'app_evacuacion_codeMiguel/evacuacion.html')
